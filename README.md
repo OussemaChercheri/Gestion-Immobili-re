@@ -1,7 +1,7 @@
 # Gestion-Immobiliere
 
 # Backend
-- under `backend/src/main/resources` you need to add `application.properties` that contain all configuration:
+- under `Project/src/main/resources` you need to add `application.properties` that contain all configuration:
 
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/demo

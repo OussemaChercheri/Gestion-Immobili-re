@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Bien</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+<form th:action="@{/submit_bien}" method="post" enctype="multipart/form-data">
+
+    <label for="labelle">Labelle:</label>
+    <input type="text" id="labelle" name="labelle" th:required="required" th:field="*{labelle}"><br>
+
+    <label for="photourl">Photo URL:</label>
+    <input type="file" id="photourl" name="photourl" th:required="required" th:field="*{photourl}"><br>
+
+    <label for="detail">Détail:</label>
+    <textarea id="detail" name="detail" th:required="required" th:field="*{detail}"></textarea><br>
+
+    <label for="prix">Prix:</label>
+    <input type="text" id="prix" name="prix" th:required="required" th:field="*{prix}"><br>
+
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type" th:required="required" th:field="*{type}"><br>
+
+    <label for="nbpiece">Nombre de pièces:</label>
+    <input type="number" id="nbpiece" name="nbpiece" th:required="required" th:field="*{nbpiece}"><br>
+
+    <label>Choisir l'option:</label>
+    <input type="checkbox" id="louer" name="louv" value="louer" th:field="*{louv}">
+    <label for="louer" th:text="#{louer}">Louer</label>
+
+    <input type="checkbox" id="vendre" name="louv" value="vendre" th:field="*{louv}">
+    <label for="vendre" th:text="#{vendre}">Vendre</label><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>

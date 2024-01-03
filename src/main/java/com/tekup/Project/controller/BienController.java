@@ -25,4 +25,5 @@ public class BienController {
         model.addAttribute("biens", biens);
         return "bien-list";
     }
+    
 }

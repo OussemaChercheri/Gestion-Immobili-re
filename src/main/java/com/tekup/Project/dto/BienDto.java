@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class BienDto {
     private Long id;
-    private String lebelle;
+    private String labelle;
     private String photourl;
     private String detail;
     private String prix;

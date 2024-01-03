@@ -32,7 +32,7 @@ public class BienServiceImpl implements BienService{
     private BienDto mapToBienDto(Bien bien){
         BienDto bienDto = BienDto.builder()
             .id(bien.getId())
-            .lebelle(bien.getLebelle())
+            .labelle(bien.getLabelle())
             .louv(bien.getLouv())
             .nbpiece(bien.getNbpiece())
             .detail(bien.getDetail())
@@ -42,4 +42,5 @@ public class BienServiceImpl implements BienService{
         return bienDto;
 
     }
+    
 }

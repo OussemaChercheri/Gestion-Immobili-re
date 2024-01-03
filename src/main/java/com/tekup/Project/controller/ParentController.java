@@ -24,7 +24,7 @@ public class ParentController {
     // for testing purpose
     @GetMapping("/")
     public String show() {
-        return "home";// the view name
+        return "loginPage";// the view name
     }
 
     // handler for showing the registration page

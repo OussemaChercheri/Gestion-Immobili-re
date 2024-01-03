@@ -1,5 +1,6 @@
 package com.tekup.Project.dto;
 
+import io.micrometer.common.lang.Nullable;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class BienDto {
     private String detail;
     private String prix;
     private String type;
+    @Nullable
     private int nbpiece;
     private String louv;//pour dire à louer ou à vendre 
 }

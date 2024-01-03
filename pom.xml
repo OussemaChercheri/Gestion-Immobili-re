@@ -12,7 +12,7 @@
 	<artifactId>Project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Project</name>
-	<description>Application web d’une agence immobilière.</description>
+	<description>Application web d'une agence immobilière.</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

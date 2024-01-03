@@ -3,6 +3,7 @@ package com.tekup.Project.controller;
 import java.util.List;
 
 //import org.apache.catalina.security.SecurityUtil;
+//import org.apache.catalina.security.SecurityUtil;
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,40 +29,48 @@ public class BienController {
         this.bienService = bienService;
     }
     
-    @GetMapping("/biens")
+    @GetMapping("/Biens")
     //to retrieves the list of BienDto objects from the bienService and adds it to the model
     public String listBiens(Model model) {
         List<BienDto> biens = bienService.findAllBiens();
-        model.addAttribute("biens", biens);
-        return "bien-list";//the view name
+        model.addAttribute("Biens", biens);
+        
+        return "Bien-list";//the view name
     }
 ///////retrieve bien
-    @GetMapping("/biens/new")
+    @GetMapping("/Biens/new")
     public String createbienForm(Model model) {
         Bien bien = new Bien();
         model.addAttribute("bien", bien);
-        return "bien-create";////the view name
+        return "Bien-create";////the view name
+    }
+
+    @GetMapping("/Biens/{BienId}")
+    public String BienDetail(@PathVariable("BienId") long BienId, Model model) {
+        BienDto BienDto = bienService.findBienById(BienId);
+        model.addAttribute("Bien", BienDto);
+        return "Biens-detail";
     }
 
 
 
 ////////////////////creation
-@PostMapping("/biens/new")
-    public String saveBien(@ModelAttribute("Bien") Bien Bien) {
-        bienService.saveBien(Bien);
-        return "redirect:/biens";
+@PostMapping("/Biens/new")
+    public String saveBien(@ModelAttribute("Bien") Bien bien) {
+        bienService.saveBien(bien);
+        return "redirect:/Biens";
     }
 
     //////////////////update
     @GetMapping("/Biens/{BienId}/edit")
     public String editBienForm(@PathVariable("BienId") Long BienId, Model model) {
-        BienDto Bien = bienService.findBienById(BienId);
-        model.addAttribute("Bien", Bien);
+        BienDto bien = bienService.findBienById(BienId);
+        model.addAttribute("Bien", bien);
         return "Biens-edit";
     }
 
     @PostMapping("/Biens/{BienId}/edit")
-    public String updateBien(@PathVariable("BienId") Long BienId,@Valid @ModelAttribute("Bien") BienDto Bien) {
+    public String updateBien(@PathVariable("BienId") Long BienId,@Valid @ModelAttribute("bien") BienDto Bien) {
         
         Bien.setId(BienId);
         bienService.updateBien(Bien);

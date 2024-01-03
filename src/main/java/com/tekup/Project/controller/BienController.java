@@ -42,7 +42,7 @@ public class BienController {
         model.addAttribute("bien", bien);
         return "bien-create";////the view name
     }
- ///////////////// get by id
+
 
 
 ////////////////////creation
@@ -51,6 +51,13 @@ public class BienController {
         BienService.saveBien(Bien);
         return "redirect:/biens";
     }
+
+    //////////////////update
+    @GetMapping("/Biens/{BienId}/edit")
+    public String editBienForm(@PathVariable("BienId") Long BienId, Model model) {
+        BienDto Bien = BienService.findBienById(BienId);
+        model.addAttribute("Bien", Bien);
+      
 
 
 }

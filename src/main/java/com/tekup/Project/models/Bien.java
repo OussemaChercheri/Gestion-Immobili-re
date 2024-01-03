@@ -22,7 +22,7 @@ public class Bien {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String lebelle;
+    private String labelle;
     private String photourl;
     private String detail;
     private String prix;

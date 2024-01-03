@@ -8,7 +8,7 @@ import lombok.Data;
 //design patter builder pour créer une instance de tel façon setting ykoun ll properties li nst7a9ouhom for a particular instance
 public class BienDto {
     private Long id;
-    private String lebelle;
+    private String labelle;
     private String photourl;
     private String detail;
     private String prix;

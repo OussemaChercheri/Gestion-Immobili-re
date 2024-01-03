@@ -6,5 +6,8 @@ public interface BienService {
 
     List<BienDto> findAllBiens();
     Bien saveBien(Bien Bien) ;
+    static BienDto findBienById(Long bienId) {
+        return null;
+    }
     
 }

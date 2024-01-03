@@ -37,9 +37,7 @@ public class BienController {
         
         return "Bien-list";//the view name
     }
-<<<<<<< HEAD
-    
-=======
+
 ///////retrieve bien
     @GetMapping("/Biens/new")
     public String createbienForm(Model model) {
@@ -87,5 +85,4 @@ public class BienController {
         return "redirect:/Biens";
     }
 
->>>>>>> 0082773f35dfa17c3ff12fad6ec5ec8a82f9baff
 }

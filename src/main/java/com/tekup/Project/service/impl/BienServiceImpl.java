@@ -79,6 +79,11 @@ public class BienServiceImpl implements BienService{
         return bienDto;
     }
 
+    @Override
+    public void delete(Long bienId) {
+        bienRepository.deleteById(bienId);
+    }
+
     
 
    

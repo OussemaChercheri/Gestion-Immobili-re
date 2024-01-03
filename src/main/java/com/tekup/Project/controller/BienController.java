@@ -71,7 +71,12 @@ public class BienController {
         return "redirect:/Biens";
     }
       
-
+//////////////////////delete
+@GetMapping("/Biens/{BienId}/delete")
+    public String deleteBien(@PathVariable("BienId")Long BienId) {
+        bienService.delete(BienId);
+        return "redirect:/Biens";
+    }
 
 >>>>>>> 0082773f35dfa17c3ff12fad6ec5ec8a82f9baff
 }

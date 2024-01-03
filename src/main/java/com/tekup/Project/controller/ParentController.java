@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tekup.Project.entity.User;
 import com.tekup.Project.repository.UserRepository;
 
+//////////////requests related to user registration and login
+
+
 @Controller
 public class ParentController {
 
@@ -21,13 +24,13 @@ public class ParentController {
     // for testing purpose
     @GetMapping("/")
     public String show() {
-        return "home";
+        return "home";// the view name
     }
 
     // handler for showing the registration page
     @GetMapping("/registration")
     public String registrationPage(@ModelAttribute("user") User user) {
-        return "registrationPage";
+        return "registrationPage";//to display the registration form
     }
     //Handler for showing the login page
     @GetMapping("/loginPage")
@@ -38,6 +41,7 @@ public class ParentController {
     @PostMapping("/register")
     @ResponseBody
     public String register(@ModelAttribute("user") User user) {
+        //for hashing the password and saving user data
         System.out.println(user);
         String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
         user.setPassword(hashedPassword);
@@ -50,6 +54,7 @@ public class ParentController {
     @ResponseBody
     public String loginProcess(@RequestParam("email") String email,
     @RequestParam("password") String password) {
+        //for checking login credentials
         User dbuser=userRepository.findByEmail(email);
         Boolean isPasswordMatch=BCrypt.checkpw(password, dbuser.getPassword());
         if(isPasswordMatch)

@@ -1,5 +1,7 @@
 package com.tekup.Project.models;
 
+import com.tekup.Project.entity.User;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,5 +29,7 @@ public class Bien {
     private String type;
     private int nbpiece;
     private String louv;
+    public void setCreatedBy(User user) {
+    }
     
 }

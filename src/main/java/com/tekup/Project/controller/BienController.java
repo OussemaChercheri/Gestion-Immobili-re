@@ -2,11 +2,11 @@ package com.tekup.Project.controller;
 
 import java.util.List;
 
-import org.apache.catalina.security.SecurityUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.apache.catalina.security.SecurityUtil;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+//import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +23,7 @@ import jakarta.validation.Valid;
 public class BienController {
     private BienService bienService;
 
-    @Autowired
+   // @Autowired
     public BienController(BienService bienService) {
         this.bienService = bienService;
     }
@@ -48,15 +48,25 @@ public class BienController {
 ////////////////////creation
 @PostMapping("/biens/new")
     public String saveBien(@ModelAttribute("Bien") Bien Bien) {
-        BienService.saveBien(Bien);
+        bienService.saveBien(Bien);
         return "redirect:/biens";
     }
 
     //////////////////update
     @GetMapping("/Biens/{BienId}/edit")
     public String editBienForm(@PathVariable("BienId") Long BienId, Model model) {
-        BienDto Bien = BienService.findBienById(BienId);
+        BienDto Bien = bienService.findBienById(BienId);
         model.addAttribute("Bien", Bien);
+        return "Biens-edit";
+    }
+
+    @PostMapping("/Biens/{BienId}/edit")
+    public String updateBien(@PathVariable("BienId") Long BienId,@Valid @ModelAttribute("Bien") BienDto Bien) {
+        
+        Bien.setId(BienId);
+        bienService.updateBien(Bien);
+        return "redirect:/Biens";
+    }
       
 
 

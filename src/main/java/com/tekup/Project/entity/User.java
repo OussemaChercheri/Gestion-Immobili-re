@@ -22,7 +22,7 @@ public class User {
     @NotEmpty
     private String email;
     @NotEmpty
-    private String dob;
+    private String dob;//date of birth
     @NotEmpty
     private String password;
 }

@@ -42,4 +42,11 @@ public class BienServiceImpl implements BienService{
         return bienDto;
 
     }
+
+     @Override
+    public Bien saveBien(Bien Bien) {    
+        return BienRepository.save(Bien);
+    }
+
+   
 }

@@ -2,12 +2,14 @@ package com.tekup.Project.controller;
 
 import java.util.List;
 
+import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tekup.Project.dto.BienDto;
@@ -40,6 +42,8 @@ public class BienController {
         model.addAttribute("bien", bien);
         return "bien-create";////the view name
     }
+ ///////////////// get by id
+
 
 ////////////////////creation
 @PostMapping("/biens/new")

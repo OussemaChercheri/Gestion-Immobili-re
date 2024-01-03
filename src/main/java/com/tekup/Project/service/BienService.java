@@ -10,5 +10,6 @@ public interface BienService {
     Bien saveBien(Bien Bien) ;
     BienDto findBienById(Long BienId);
     void updateBien(@Valid BienDto bien);
+    void delete(Long bienId);
     
 }

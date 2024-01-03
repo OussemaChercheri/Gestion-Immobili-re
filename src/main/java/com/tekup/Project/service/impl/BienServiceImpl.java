@@ -45,6 +45,9 @@ public class BienServiceImpl implements BienService{
         return bienDto;
 
     }
+<<<<<<< HEAD
+    
+=======
 
      @Override
     public Bien saveBien(Bien Bien) {    
@@ -84,4 +87,5 @@ public class BienServiceImpl implements BienService{
     
 
    
+>>>>>>> 0082773f35dfa17c3ff12fad6ec5ec8a82f9baff
 }

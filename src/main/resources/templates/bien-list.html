@@ -5,6 +5,8 @@
 <head>
     <title>Bien List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -18,21 +20,17 @@
                 <p class="lead fw-normal text-muted mb-0">Groups of passionate near you</p>
             </div>
             <div class="row gx-5">
-               <!-- <div>
-                    <form th:action="@{/Biens/search}" class="form-inline my-2 my-lg-0 mb-3">
-                        <input name="query" class="form-control mr-sm-2 mb-5" type="search" placeholder="Search running Biens" aria-label="Search">
-                    </form>
-                </div>-->
-                <div th:each="Bien :${Biens}" class="col-lg-6 mb-2">
+                <div th:each="Bien :${Biens}" class="col-lg-6 mb-2 position-relative">
                     <div class="position-relative mb-3">
                         <img class="img-fluid rounded-3 mb-3" th:src="${Bien.photourl}" alt="..." />
-                        <a th:text="${Bien.labelle}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+                        <div class="h3 fw-bolder text-decoration-none link-dark stretched-link" th:text="${Bien.labelle}">
+                            <p th:text="${Bien.description}"></p>
+                        </div>
                     </div>
                     <a class="btn btn-primary" th:href="@{/Biens/{BienId}(BienId=${Bien.id})}">View</a>
                     <div th:if="${user != null and user.id == Bien.createdBy.id}">
                         <a class="btn btn-primary" th:href="@{/Biens/{BienId}/edit(BienId=${Bien.id})}">Edit</a>
                     </div>
-                    
                 </div>
             </div>
         </div>

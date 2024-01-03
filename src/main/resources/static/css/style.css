@@ -90,3 +90,35 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.position-relative {
+    flex-basis: calc(50% - 15px); /* Adjust the width as needed, 15px is for margin */
+    margin-bottom: 30px; /* Adjust the margin between boxes */
+    box-sizing: border-box; /* Include padding and border in the box's total width and height */
+}
+
+.img-container {
+    overflow: hidden; /* Hide any overflowing content */
+    border-radius: 10px; /* Add rounded corners to the container */
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.h3 {
+    margin-top: 10px; /* Adjust the spacing between image and label */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .position-relative {
+        flex-basis: 100%; /* On smaller screens, make boxes full width */
+    }
+}

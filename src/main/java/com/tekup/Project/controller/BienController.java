@@ -40,7 +40,7 @@ public class BienController {
 
 ///////retrieve bien
     @GetMapping("/Biens/new")
-    public String createbienForm(Model model) {
+    public String createBienForm(Model model) {
         Bien bien = new Bien();
         model.addAttribute("bien", bien);
         return "Bien-create";////the view name

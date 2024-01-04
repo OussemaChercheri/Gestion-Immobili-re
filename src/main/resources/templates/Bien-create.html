@@ -1,4 +1,4 @@
-<html
+<html lang="fr"
         xmlns:th="http://thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layout}">
@@ -37,6 +37,18 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+.form-group.radio-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group.radio-buttons div {
+    flex: 1;
+}
+
+.form-group.radio-buttons label {
+    margin-left: 5px;
+}
 </style>
   
 </head>
@@ -71,17 +83,7 @@ button:hover {
           <p th:if="${#fields.hasErrors('photourl')}" class="text-danger" th:errors="*{photourl}"></p>
         </div>
       </div>
-      <div class="form-group mb-3">
-        <label for="detail">detail</label>
-        <input
-                type="text"
-                class="form-control"
-                id="detail"
-                name="detail"
-                th:field="*{detail}"
-                placeholder="1234 Main St">
-        <p th:if="${#fields.hasErrors('detail')}" class="text-danger" th:errors="*{detail}"></p>
-      </div>
+      
       <div class="form-group mb-3">
         <label for="prix">Prix:</label>
         <input type="text" id="prix" name="prix" th:required="required" th:field="*{prix}">
@@ -98,13 +100,28 @@ button:hover {
         <p th:if="${#fields.hasErrors('nbpiece')}" class="text-danger" th:errors="*{nbpiece}"></p>
     </div>
     <div class="form-group mb-3">
+        <label for="detail">detail</label>
+        <textarea
+                type="text"
+                class="form-control"
+                id="detail"
+                name="detail"
+                th:field="*{detail}"
+                placeholder="1234 Main St"></textarea>
+        <p th:if="${#fields.hasErrors('detail')}" class="text-danger" th:errors="*{detail}"></p>
+      </div>
+      <div class="form-group mb-3 radio-buttons">
         <label>Choisir l'option:</label>
-        <input type="checkbox" id="louer" name="louv" value="louer" th:field="*{louv}">
-        <label for="louer" th:text="#{louer}">Louer</label>
-
-        <input type="checkbox" id="vendre" name="louv" value="vendre" th:field="*{louv}">
-        <label for="vendre" th:text="#{vendre}">Vendre</label>
+        <div>
+            <input type="radio" id="louer" name="louv" value="louer" th:field="*{louv}">
+            <label for="louer" th:text="#{louer}">Louer</label>
+        </div>
+        <div>
+            <input type="radio" id="vendre" name="louv" value="vendre" th:field="*{louv}">
+            <label for="vendre" th:text="#{vendre}">Vendre</label>
+        </div>
     </div>
+    
       <button type="submit" class="btn btn-primary">Create</button>
     </form>
     </div>

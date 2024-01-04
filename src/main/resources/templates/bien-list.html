@@ -1,40 +1,67 @@
-<html
-        xmlns:th="http://thymeleaf.org"
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="~{layout}">
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <title>Bien List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <style>
+        .bien-box {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); 
+            border-radius:3%;
+            padding:4%;
+        }
 
+        .bien-image {
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+            border-radius:5%;
+        }
+
+        .bien-details {
+            padding: 1rem;
+            text-align: center;
+            background-color: #f8f9fa; /* Light gray background for details */
+        }
+
+        .bien-box:hover .btn-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-view {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column h-100">
-<main class="flex-shrink-0">
-    <section layout:fragment="body" class="py-5">
-        <div class="container px-5 my-5">
-            <div th:if="${param.success}" class="alert alert-success">
-                You are registered successfully!
-            </div>
-            <div class="text-center mb-5">
-                <h1 class="fw-bolder">Find Running Biens</h1>
-                <p class="lead fw-normal text-muted mb-0">Groups of passionate near you</p>
-            </div>
-            <div class="row gx-5">
-                <div th:each="Bien :${Biens}" class="col-lg-6 mb-2 position-relative">
-                    <div class="position-relative mb-3">
-                        <img class="img-fluid rounded-3 mb-3" th:src="${Bien.photourl}" alt="..." />
-                        <div class="h3 fw-bolder text-decoration-none link-dark stretched-link" th:text="${Bien.labelle}">
-                            <p th:text="${Bien.description}"></p>
+    <main class="flex-shrink-0">
+        <section layout:fragment="body" class="py-5">
+            <div class="container px-5 my-5">
+                <!-- Your existing code -->
+                <div class="row gx-5">
+                    <div th:each="Bien :${Biens}" class="col-lg-6 mb-2">
+                        <div class="bien-box">
+                            <img class="img-fluid rounded-3 bien-image" th:src="${Bien.photourl}" alt="..." />
+                            <div class="bien-details">
+                                <h3 class="fw-bolder text-decoration-none link-dark" th:text="${Bien.labelle}"></h3>
+                                <p th:text="${Bien.detail}"></p>
+                                <a class="btn btn-primary btn-view" th:href="@{/Biens/{BienId}(BienId=${Bien.id})}">View</a>
+                            </div>
                         </div>
-                    </div>
-                    <a class="btn btn-primary" th:href="@{/Biens/{BienId}(BienId=${Bien.id})}">View</a>
-                    <div th:if="${user != null and user.id == Bien.createdBy.id}">
-                        <a class="btn btn-primary" th:href="@{/Biens/{BienId}/edit(BienId=${Bien.id})}">Edit</a>
+                        <div th:if="${user != null and user.id == Bien.createdBy.id}">
+                            <a class="btn btn-primary" th:href="@{/Biens/{BienId}/edit(BienId=${Bien.id})}">Edit</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 </body>
 </html>

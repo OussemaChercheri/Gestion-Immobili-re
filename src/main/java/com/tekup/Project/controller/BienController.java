@@ -48,8 +48,8 @@ public class BienController {
 
     @GetMapping("/Biens/{BienId}")
     public String BienDetail(@PathVariable("BienId") long BienId, Model model) {
-        BienDto BienDto = bienService.findBienById(BienId);
-        model.addAttribute("Bien", BienDto);
+        BienDto bienDto = bienService.findBienById(BienId);
+        model.addAttribute("Bien", bienDto);
         return "Biens-detail";
     }
 

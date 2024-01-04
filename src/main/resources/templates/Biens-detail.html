@@ -28,10 +28,11 @@
             <div class="card-body">
               
               <h2 class="card-title">About this running Bien</h2>
-              <p class="card-text" th:text="${Bien.content}"></p>
-              <div th:if="${user.id} == ${Bien.createdBy.id}">
-              <a class="btn btn-primary" th:href="@{/Biens/{BienId}/delete(BienId=${Bien.id})}">Delete</a>
-              <a class="btn btn-primary" th:href="@{/events/{BienId}/new(BienId=${Bien.id})}">Create Event</a>
+              <p class="card-text" th:text="${Bien.detail}"></p>
+              <div th:if="${user != null}">
+                <p th:text="${user.id}"></p>
+            </div>             
+             <a class="btn btn-primary" th:href="@{/Biens/{BienId}/delete(BienId=${Bien.id})}">Delete</a>
               </div>
             </div>
           </div>
